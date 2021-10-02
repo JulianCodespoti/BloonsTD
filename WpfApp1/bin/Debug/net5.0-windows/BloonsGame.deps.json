@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "BloonsGame/1.0.0": {
+        "dependencies": {
+          "BloonsGameLibrary": "1.0.0"
+        },
+        "runtime": {
+          "BloonsGame.dll": {}
+        }
+      },
+      "BloonsGameLibrary/1.0.0": {
+        "runtime": {
+          "BloonsGameLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BloonsGame/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BloonsGameLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

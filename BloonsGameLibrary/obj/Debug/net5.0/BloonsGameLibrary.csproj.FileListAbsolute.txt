@@ -1,0 +1,14 @@
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\bin\Debug\net5.0\BloonsGameLibrary.deps.json
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\bin\Debug\net5.0\BloonsGameLibrary.dll
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\bin\Debug\net5.0\ref\BloonsGameLibrary.dll
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\bin\Debug\net5.0\BloonsGameLibrary.pdb
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.csproj.AssemblyReference.cache
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.AssemblyInfoInputs.cache
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.AssemblyInfo.cs
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.csproj.CoreCompileInputs.cache
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.dll
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\ref\BloonsGameLibrary.dll
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\BloonsGameLibrary.pdb
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\bin\Debug\net5.0\RevDeBug.setup
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGameLibrary\obj\Debug\net5.0\RdbLog.txt
