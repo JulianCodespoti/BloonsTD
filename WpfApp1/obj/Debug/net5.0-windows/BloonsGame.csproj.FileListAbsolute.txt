@@ -24,5 +24,3 @@ C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windo
 C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\ref\BloonsGame.dll
 C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\BloonsGame.pdb
 C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\BloonsGame.genruntimeconfig.cache
-C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\bin\Debug\net5.0-windows\RevDeBug.setup
-C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\RdbLog.txt

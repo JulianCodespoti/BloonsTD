@@ -15,7 +15,7 @@ namespace BloonsProject
             TimeSinceLastShot = 0;
             ProjectileBitmap = new Bitmap("Dart", "./Images/Spike.png");
             ProjectileSpeed = 0.3;
-            ProjectileSize = 1;
+            ProjectileSize = 1.5;
             ProjectileLength = 48;
             ProjectileWidth = 48;
         }

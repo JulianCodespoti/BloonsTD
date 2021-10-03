@@ -33,18 +33,23 @@ namespace BloonsProject
                 var imageLocationList = new List<Point2D>(towerOptions.ClickableShapes.Keys);
                 var currentTowerUpgradesList = new List<double>()
                     {tower.ShotType.RangeUpgradeCount, tower.ShotType.FirerateUpgradeCount, tower.SellPrice};
+                var currentTowerUpgradesPriceList = new List<double>()
+                    {tower.ShotType.RangeUpgradeCost, tower.ShotType.FirerateUpgradeCost , tower.SellPrice};
+                
                 for (int i = 0; i < towerOptions.ClickableShapes.Count; i++)
                 {
                     if (i == towerOptions.ClickableShapes.Count - 1)
                     {
                         SplashKit.DrawBitmap(towerOptions.ClickableShapeImages[i], imageLocationList[i].X, imageLocationList[i].Y);
-                        SplashKit.DrawText("Sell price: " + currentTowerUpgradesList[i].ToString(), Color.Black,
+                        SplashKit.DrawText("Sell price: " + currentTowerUpgradesList[i], Color.Black,
                             imageLocationList[i].X - 5, imageLocationList[i].Y + towerOptions.Height + 10);
                         continue;
                     }
                     SplashKit.DrawBitmap(towerOptions.ClickableShapeImages[i], imageLocationList[i].X, imageLocationList[i].Y);
-                    SplashKit.DrawText("Upgrades: " + currentTowerUpgradesList[i].ToString() + "/3", Color.Black,
+                    SplashKit.DrawText("Upgrades: " + currentTowerUpgradesList[i] + "/3", Color.Black,
                         imageLocationList[i].X, imageLocationList[i].Y + towerOptions.Height + 10);
+                    SplashKit.DrawText("Price: $" + currentTowerUpgradesPriceList[i], Color.Black,
+                        imageLocationList[i].X, imageLocationList[i].Y + towerOptions.Height + 20);
                 }
             }
         }

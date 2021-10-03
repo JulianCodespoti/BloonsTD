@@ -38,7 +38,7 @@ namespace BloonsProject
                 {
                     var bloonCircle = new Circle() { Center = bloon.Position, Radius = bloon.Radius * projectile.ProjectileShotType.ProjectileSize };
                     var projectileLocation = new Point2D()
-                    { X = projectile.ProjectileLocation.X, Y = projectile.ProjectileLocation.Y };
+                    { X = projectile.ProjectileLocation.X + projectile.ProjectileShotType.ProjectileWidth / 2, Y = projectile.ProjectileLocation.Y + projectile.ProjectileShotType.ProjectileLength / 2};
                     if (SplashKit.PointInCircle(projectileLocation, bloonCircle))
                     {
                         var oldBloonHealth = bloon.Health;
