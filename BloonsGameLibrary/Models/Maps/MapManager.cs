@@ -13,7 +13,8 @@ namespace BloonsProject.Models.Maps
         {
             Map easyMap = new EasyMap();
             Map mediumMap = new MediumMap();
-            Maps = new List<Map>() { easyMap, mediumMap };
+            Map emptyCornfieldMap = new EmptyCornfieldMap();
+            Maps = new List<Map>() { easyMap, mediumMap, emptyCornfieldMap };
         }
 
         public Map GetMapByName(string mapName)

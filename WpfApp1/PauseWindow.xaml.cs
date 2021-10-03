@@ -1,28 +1,30 @@
-﻿using System.Windows;
-using BloonsProject;
+﻿using BloonsProject;
+using System.Windows;
 
 namespace BloonsGame
 {
     public partial class PauseWindow : Window
     {
-        private ProgramController programController;
+        private readonly ProgramController _programController;
 
         public PauseWindow(ProgramController programController)
         {
             InitializeComponent();
-
-            this.programController = programController;
+            this._programController = programController;
         }
 
-        private void OnContinueButtonClick(object sender, RoutedEventArgs e)
+        private void OnContinueButtonClick(object sender, RoutedEventArgs routedEventArgs)
         {
-            programController.Unpause();
+            _programController.Unpause();
             Close();
         }
 
-        private void OnExitButtonClick(object sender, RoutedEventArgs e)
+        private void OnExitButtonClick(object sender, RoutedEventArgs routedEventArgs)
         {
-            System.Environment.Exit(-1);
+            _programController.CloseGame();
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using System.Windows;
-using BloonsProject;
+﻿using BloonsProject;
 using BloonsProject.Models.Maps;
+using System.Windows;
 
 namespace BloonsGame
 {
@@ -33,8 +33,9 @@ namespace BloonsGame
             _programController = new ProgramController(map);
             OpenPauseScreen();
             _pauseWindow.Hide();
-            this.Close();
+            Close();
             _programController.PauseEventHandler += OpenPauseScreen;
+            _programController.LoseEventHandler += OpenLossScreen;
             _programController.RunGame();
         }
 
@@ -42,6 +43,12 @@ namespace BloonsGame
         {
             _pauseWindow = new PauseWindow(_programController);
             _pauseWindow.Show();
+        }
+
+        public void OpenLossScreen()
+        {
+            var loseWindow = new LoseWindow(_programController);
+            loseWindow.Show();
         }
 
         private void MapComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

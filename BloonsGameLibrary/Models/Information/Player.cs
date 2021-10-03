@@ -4,8 +4,8 @@
     {
         public Player()
         {
-            Lives = 100;
-            Money = 1000;
+            Lives = 10;
+            Money = 200;
             Round = 1;
         }
 

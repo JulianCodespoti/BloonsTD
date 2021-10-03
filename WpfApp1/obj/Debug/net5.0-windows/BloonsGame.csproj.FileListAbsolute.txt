@@ -24,3 +24,5 @@ C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windo
 C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\ref\BloonsGame.dll
 C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\BloonsGame.pdb
 C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\BloonsGame.genruntimeconfig.cache
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\LoseWindow.baml
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\WpfApp1\obj\Debug\net5.0-windows\LoseWindow.g.cs

@@ -1,6 +1,7 @@
 ﻿using System;
 using SplashKitSDK;
 using System.Diagnostics;
+using System.Net.Mime;
 using System.Threading;
 using Microsoft.VisualBasic;
 
@@ -10,7 +11,7 @@ namespace BloonsProject
     {
         private readonly Map _map;
         private readonly Window _window;
-        private readonly GameState _bloonSingleton = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
         private readonly TowerPlacerClicker _towerPlacer = new TowerPlacerClicker();
         private readonly BloonController _bloonController = new BloonController();
         private readonly TowerController _towerController = new TowerController();
@@ -21,7 +22,10 @@ namespace BloonsProject
         private readonly TowerOptionClicker _towerOptions = new TowerOptionClicker();
 
         private bool _isPaused;
+
         public event Action PauseEventHandler;
+
+        public event Action LoseEventHandler;
 
         public ProgramController(Map map)
         {
@@ -40,11 +44,16 @@ namespace BloonsProject
         public void StartUpGame()
         {
             _bloonStopWatch.Start();
-            _gameController.SetRound(_map, _bloonSingleton.Player.Round);
+            _gameController.SetRound(_map, _gameState.Player.Round);
         }
 
         public void GameEvents()
         {
+            if (_gameController.DepletedLives())
+            {
+                LoseEventHandler?.Invoke();
+                CloseGame();
+            }
             _towerController.UpgradeOrSellSelectedTower(_towerController, _towerOptions);
             _gameController.LoseLives(_map);
             _towerController.ShootBloons(_map);
@@ -53,12 +62,12 @@ namespace BloonsProject
 
             if (_gameController.CheckBloons() && _bloonController.BloonsOnScreen(_window) == 0)
             {
-                _bloonSingleton.Player.Round++;
-                _bloonSingleton.Player.Money += 20;
-                _gameController.SetRound(_map, _bloonSingleton.Player.Round);
+                _gameState.Player.Round++;
+                _gameState.Player.Money += 20;
+                _gameController.SetRound(_map, _gameState.Player.Round);
             }
 
-            _bloonController.ProcessBloons(_bloonSingleton.Player, _map);
+            _bloonController.ProcessBloons(_gameState.Player, _map);
         }
 
         public void SelectedTowerEvents()
@@ -92,7 +101,7 @@ namespace BloonsProject
             {
                 SplashKit.RefreshScreen(60);
                 SplashKit.ProcessEvents();
-                
+
                 if (_isPaused) continue;
 
                 DrawBloonsGame();
@@ -116,5 +125,11 @@ namespace BloonsProject
         }
 
         public void Unpause() => _isPaused = false;
+
+        public void CloseGame()
+        {
+            GameState.Reset();
+            SplashKit.CloseAllWindows();
+        }
     }
 }

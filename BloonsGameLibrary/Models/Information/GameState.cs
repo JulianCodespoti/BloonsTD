@@ -38,5 +38,10 @@ namespace BloonsProject
 
             return _state;
         }
+
+        public static void Reset()
+        {
+            _state = null;
+        }
     }
 }

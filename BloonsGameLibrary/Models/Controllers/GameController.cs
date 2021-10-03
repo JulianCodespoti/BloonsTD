@@ -6,7 +6,7 @@ namespace BloonsProject
 {
     public class GameController
     {
-        private readonly GameState _bloonSingleton = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
 
         public GameController()
         {
@@ -14,24 +14,29 @@ namespace BloonsProject
 
         public bool CheckBloons()
         {
-            return _bloonSingleton.BloonsSpawned.Count == _bloonSingleton.BloonsToBeSpawned.Count && !_bloonSingleton.BloonsSpawned.Except(_bloonSingleton.BloonsToBeSpawned).Any();
+            return _gameState.BloonsSpawned.Count == _gameState.BloonsToBeSpawned.Count && !_gameState.BloonsSpawned.Except(_gameState.BloonsToBeSpawned).Any();
+        }
+
+        public bool DepletedLives()
+        {
+            return _gameState.Player.Lives <= 0;
         }
 
         public void LoseLives(Map map)
         {
-            if (_bloonSingleton.Bloons.Count <= 0) return;
-            var bloonsToBeDeleted = _bloonSingleton.Bloons.Where(b => b.Checkpoint == map.Checkpoints.Count).ToList();
+            if (_gameState.Bloons.Count <= 0) return;
+            var bloonsToBeDeleted = _gameState.Bloons.Where(b => b.Checkpoint == map.Checkpoints.Count).ToList();
             foreach (var bloon in bloonsToBeDeleted)
             {
-                _bloonSingleton.Player.Lives -= bloon.Health;
-                _bloonSingleton.Bloons.Remove(bloon);
+                _gameState.Player.Lives -= bloon.Health;
+                _gameState.Bloons.Remove(bloon);
             }
         }
 
         public void SetRound(Map map, int round)
         {
-            _bloonSingleton.BloonsToBeSpawned = map.BloonsPerRound(round);
-            _bloonSingleton.BloonsSpawned = new Dictionary<Color, int>
+            _gameState.BloonsToBeSpawned = map.BloonsPerRound(round);
+            _gameState.BloonsSpawned = new Dictionary<Color, int>
             {
                 [Color.Red] = 0,
                 [Color.Blue] = 0,

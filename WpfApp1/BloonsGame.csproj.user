@@ -3,8 +3,8 @@
   <PropertyGroup>
     <RevDeBugActive>false</RevDeBugActive>
     <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
-    <RevDeBugCompilerPath>c:\users\julia\appdata\local\microsoft\visualstudio\16.0_08222347\extensions\p1jspdgy.zcm\tmcc\</RevDeBugCompilerPath>
-    <CustomAfterMicrosoftCommonTargets>c:\users\julia\appdata\local\microsoft\visualstudio\16.0_08222347\extensions\p1jspdgy.zcm\tmcc\RevDeBug.ImportAfter.targets</CustomAfterMicrosoftCommonTargets>
+    <RevDeBugCompilerPath>C:\USERS\JULIA\APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\16.0_08222347\EXTENSIONS\P1JSPDGY.ZCM\tmcc\</RevDeBugCompilerPath>
+    <CustomAfterMicrosoftCommonTargets>C:\USERS\JULIA\APPDATA\LOCAL\MICROSOFT\VISUALSTUDIO\16.0_08222347\EXTENSIONS\P1JSPDGY.ZCM\tmcc\RevDeBug.ImportAfter.targets</CustomAfterMicrosoftCommonTargets>
     <SaveMetadataAsync>true</SaveMetadataAsync>
     <RevDeBugDisableNuget>true</RevDeBugDisableNuget>
     <RevDeBugMetadataPath>C:\Users\julia\OneDrive\Documents\RevDeBug\WpfApp1\Metadata\\</RevDeBugMetadataPath>
@@ -19,11 +19,17 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="LoseWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PauseWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="LoseWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
