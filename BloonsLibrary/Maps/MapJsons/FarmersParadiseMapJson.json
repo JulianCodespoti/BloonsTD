@@ -1,0 +1,45 @@
+{
+    "BloonsMap": "./Resources/EmptyCornfieldMap.png",
+    "Name": "Farmers Paradise",
+    "Height": 560,
+    "Length": 811,
+    "TrackWidthRadius": 25,
+    "Checkpoints": [
+        {
+            "X": 25,
+            "Y": 0
+        },
+        {
+            "X": 27,
+            "Y": 536
+        },
+        {
+            "X": 50,
+            "Y": 545
+        },
+        {
+            "X": 275,
+            "Y": 542
+        },
+        {
+            "X": 285,
+            "Y": 213
+        },
+        {
+            "X": 452,
+            "Y": 212
+        },
+        {
+            "X": 464,
+            "Y": 388
+        },
+        {
+            "X": 718,
+            "Y": 385
+        },
+        {
+            "X": 723,
+            "Y": 0
+        }
+    ]
+}
