@@ -42,31 +42,31 @@ To install SplashKit, follow the link https://www.splashkit.io/articles/installa
 
 ## Starting screen
 
-![Image](/BloonsGame/GitHubImages/MainMenu.png)
+![Image](/BloonsGame/GitHubImages/MainMenu.png?raw=true)
 ## Selected tower on screen
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image1.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image1.png?raw=true)
 ## Unable to place tower on path
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image2.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image2.png?raw=true)
 ## First tower firing a projectile
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image3.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image3.png?raw=true)
 ## Second tower firing a projectile
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image4.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image4.png?raw=true)
 ## Unable to place tower on path
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image5.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image5.png?raw=true)
 ## Upgrading the tower
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image6.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image6.png?raw=true)
 ## Projectile of the third tower
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image7.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image7.png?raw=true)
 ## Pause screen
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image8.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image8.png?raw=true)
 ## Loss Screen
 
-![Image](../BloonsGame/BloonsGame/GitHubImages/Image9.png?raw=true)
+![Image](/BloonsGame/GitHubImages/Image9.png?raw=true)
