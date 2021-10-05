@@ -74,7 +74,7 @@ namespace BloonsProject
                 if (!tower.ShotTimer()) continue;
                 var bloonsInTowerRadius = _gameState.Bloons.Where(b =>
                     SplashKit.PointInCircle(b.Position, SplashKit.CircleAt(tower.Position, tower.Range))).ToList();
-                if (bloonsInTowerRadius.Count == 0) return;
+                if (bloonsInTowerRadius.Count == 0) continue;
 
                 var bloonToTarget = tower.Targeting.BloonToTarget(bloonsInTowerRadius);
                 var projectileEndPoint = _gameState.ProjectileManager.GetProjectileEndPoint(bloonToTarget, tower);
