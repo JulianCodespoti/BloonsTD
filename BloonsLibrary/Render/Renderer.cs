@@ -56,8 +56,8 @@ namespace BloonsProject
             SplashKit.DrawBitmapOnWindow(_window, SplashKit.LoadBitmap("map", _map.BloonsMap), 0, 0);
             SplashKit.DrawBitmapOnWindow(_window, Gui.GuiBitmap, 800, 0);
             SplashKit.DrawText(_bloonSingleton.Player.Round.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 25);
-            SplashKit.DrawText(_bloonSingleton.Player.Lives.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 65);
-            SplashKit.DrawText(_bloonSingleton.Player.Money.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 100);
+            SplashKit.DrawText(_bloonSingleton.Player.Money.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 65);
+            SplashKit.DrawText(_bloonSingleton.Player.Lives.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 100);
         }
 
         public void RenderSelectedTowerOptions(TowerGuiOptions towerOptions, TowerTargetingGuiOptions targetOptions)
