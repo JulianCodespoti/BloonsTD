@@ -2,7 +2,7 @@
 
 A recreation of the game "Bloons Tower Defense", written in C# and using both WPF and Splashkit.
 
-![Image](../BloonsGame/GitHubImages/BloonsGame.png?raw=true)
+![Image](../BloonsGame/GitHubImages/BloonsGame.png)
 # Description
 
 BloonsTD. A fundamental game that shaped my childhood, that I would spend countless of playing as the days went by. Thus, it became evident that for my University project, I would recreate none other than the game itself.
