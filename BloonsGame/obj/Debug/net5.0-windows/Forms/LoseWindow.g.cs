@@ -84,7 +84,7 @@ namespace BloonsGame {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BloonsGame;component/forms/losewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BloonsGame;V1.0.0.0;component/forms/losewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Forms\LoseWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

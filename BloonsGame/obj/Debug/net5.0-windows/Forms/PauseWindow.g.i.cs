@@ -76,7 +76,7 @@ namespace BloonsGame {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BloonsGame;component/forms/pausewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BloonsGame;V1.0.0.0;component/forms/pausewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Forms\PauseWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
