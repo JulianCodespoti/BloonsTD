@@ -49,9 +49,6 @@ To install SplashKit, follow the link https://www.splashkit.io/articles/installa
 ## Unable to place tower on path
 
 ![Image](/BloonsGame/GitHubImages/Image2.png?raw=true)
-## First tower firing a projectile
-
-![Image](/BloonsGame/GitHubImages/Image3.png?raw=true)
 ## Second tower firing a projectile
 
 ![Image](/BloonsGame/GitHubImages/Image4.png?raw=true)
