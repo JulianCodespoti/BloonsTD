@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsGame\\BloonsGame.csproj",
+      "projectUniqueName": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsGame\\BloonsGame.csproj",
       "projectName": "BloonsGame",
-      "projectPath": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsGame\\BloonsGame.csproj",
+      "projectPath": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsGame\\BloonsGame.csproj",
       "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsGame\\obj\\",
+      "outputPath": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj": {
-              "projectPath": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj"
+            "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj": {
+              "projectPath": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj"
             }
           }
         }

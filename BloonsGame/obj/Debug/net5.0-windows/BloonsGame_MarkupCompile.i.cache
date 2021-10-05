@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\julia\OneDrive\Desktop\BloonsGame\BloonsGame\obj\Debug\net5.0-windows\
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGame\obj\Debug\net5.0-windows\
 BloonsGame
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-C:\Users\julia\OneDrive\Desktop\BloonsGame\BloonsGame\App.xaml
+C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGame\App.xaml
 3868407127
 
 71847914419
-1941839784320
+194-1767115547
 Forms\LoseWindow.xaml;Forms\MainWindow.xaml;Forms\PauseWindow.xaml;
 
 False

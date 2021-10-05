@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj",
       "projectName": "BloonLibrary",
-      "projectPath": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj",
+      "projectPath": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsLibrary\\BloonLibrary.csproj",
       "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsLibrary\\obj\\",
+      "outputPath": "C:\\Users\\julia\\OneDrive\\Desktop\\Coding\\BloonsGame\\BloonsLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -7,19 +7,27 @@ namespace BloonsProject
 {
     public static class MapManager
     {
+        private static List<Map> Maps = null;
+
         public static List<Map> GetAllMaps()
         {
-            var listOfMaps = new List<Map>();
-            string mapJsonPath = "./Maps/MapJsons";
-            DirectoryInfo directoryInfo = new DirectoryInfo(mapJsonPath);
-
-            foreach (var json in directoryInfo.GetFiles("*.json"))
+            if (Maps == null)
             {
-                string jsonString = File.ReadAllText(json.ToString());
-                listOfMaps.Add(JsonSerializer.Deserialize<Map>(jsonString));
+                var listOfMaps = new List<Map>();
+                string mapJsonPath = "./Maps/MapJsons";
+                DirectoryInfo directoryInfo = new DirectoryInfo(mapJsonPath);
+
+                foreach (var json in directoryInfo.GetFiles("*.json"))
+                {
+                    string jsonString = File.ReadAllText(json.ToString());
+                    listOfMaps.Add(JsonSerializer.Deserialize<Map>(jsonString));
+                }
+
+                Maps = listOfMaps;
+                return listOfMaps;
             }
 
-            return listOfMaps;
+            return Maps;
         }
 
         public static Map GetMapByName(string mapName)

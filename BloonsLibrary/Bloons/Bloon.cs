@@ -17,12 +17,10 @@ namespace BloonsProject
             VelocityX = velocityX;
             VelocityY = velocityY;
             Checkpoint = 0;
-            BloonStopwatch = new Stopwatch();
-            BloonStopwatch.Start();
+
             DistanceTravelled = 0;
         }
 
-        public Stopwatch BloonStopwatch { get; }
         public int Checkpoint { get; set; }
         public Color Color { get; }
         public double DistanceTravelled { get; set; }
