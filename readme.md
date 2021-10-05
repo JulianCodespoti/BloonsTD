@@ -2,7 +2,7 @@
 
 A recreation of the game "Bloons Tower Defense", written in C# and using both WPF and Splashkit.
 
-![](C:\Users\julia\OneDrive\Desktop\Coding\BloonsGame\BloonsGame\GitHubImages\BloonsGame.png)
+![Image](../BloonsGame/BloonsGame/GitHubImages/BloonsGame.png?raw=true)
 # Description
 
 BloonsTD. A fundamental game that shaped my childhood, that I would spend countless of playing as the days went by. Thus, it became evident that for my University project, I would recreate none other than the game itself.
@@ -37,3 +37,36 @@ To install SplashKit, follow the link https://www.splashkit.io/articles/installa
 - Save the changes.
 
 - Run "BloonsGame" at the top of the window.
+
+# Images of the game running
+
+## Starting screen
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/MainMenu.png?raw=true)
+## Selected tower on screen
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image1.png?raw=true)
+## Unable to place tower on path
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image2.png?raw=true)
+## First tower firing a projectile
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image3.png?raw=true)
+## Second tower firing a projectile
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image4.png?raw=true)
+## Unable to place tower on path
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image5.png?raw=true)
+## Upgrading the tower
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image6.png?raw=true)
+## Projectile of the third tower
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image7.png?raw=true)
+## Pause screen
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image8.png?raw=true)
+## Loss Screen
+
+![Image](../BloonsGame/BloonsGame/GitHubImages/Image9.png?raw=true)
