@@ -17,26 +17,10 @@ namespace BloonsProject
             { X = SplashKit.MousePosition().X + 15, Y = SplashKit.MousePosition().Y + 15 };
             SplashKit.FillCircle(new Color() { A = 160, B = 1, G = 1, R = 1 }, new Circle { Center = towerCentre, Radius = selectedTower.Range });
             SplashKit.DrawBitmap(selectedTower.TowerBitmap, SplashKit.MousePosition().X - 15, SplashKit.MousePosition().Y - 15);
-            if (validPlacement)
+            if (!validPlacement)
             {
-                SplashKit.FillRectangle(Color.Green,
-                    new Rectangle
-                    {
-                        X = SplashKit.MousePosition().X + 12,
-                        Y = SplashKit.MousePosition().Y + 12,
-                        Height = Tower.Length / 3,
-                        Width = Tower.Length / 3
-                    });
-                return;
+                SplashKit.FillCircle(new Color() { A = 160, B = 255, G = 255, R = 1 }, new Circle { Center = towerCentre, Radius = selectedTower.Range });
             }
-            SplashKit.FillRectangle(Color.Red,
-            new Rectangle
-            {
-                X = SplashKit.MousePosition().X + 12,
-                Y = SplashKit.MousePosition().Y + 12,
-                Height = Tower.Length / 3,
-                Width = Tower.Length / 3
-            });
         }
 
         public void WriteTowerDescription(TowerPlacerGuiOptions towerPlacer, Tower selectedTower)
