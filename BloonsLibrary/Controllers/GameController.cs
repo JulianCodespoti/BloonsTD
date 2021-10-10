@@ -6,19 +6,19 @@ namespace BloonsProject
 {
     public class GameController
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game State singleton
 
-        public bool CheckBloons()
+        public bool RequiredBloonsHaveSpawned() // Determines whether the required number of bloons have spawned.
         {
             return _gameState.BloonsSpawned.Count == _gameState.BloonsToBeSpawned.Count && !_gameState.BloonsSpawned.Except(_gameState.BloonsToBeSpawned).Any();
         }
 
-        public bool DepletedLives()
+        public bool HaveLivesDepleted() // Determines whether the players lives have depleted
         {
             return _gameState.Player.Lives <= 0;
         }
 
-        public void LoseLives(Map map)
+        public void LoseLivesAndRemoveBloons(Map map) // Checks for any bloons at the final checkpoint, removes them and removes lives depending on the bloon's health.
         {
             if (_gameState.Bloons.Count <= 0) return;
             var bloonsToBeDeleted = _gameState.Bloons.Where(b => b.Checkpoint == map.Checkpoints.Count).ToList();
@@ -29,7 +29,7 @@ namespace BloonsProject
             }
         }
 
-        public void SetRound(Map map, int round)
+        public void SetRound(Map map, int round) // Sets the bloons to be spawned for the round and resets the bloons spawned.
         {
             _gameState.BloonsToBeSpawned = map.BloonsPerRound(round);
             _gameState.BloonsSpawned = new Dictionary<Color, int>

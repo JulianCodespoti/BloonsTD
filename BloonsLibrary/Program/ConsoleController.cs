@@ -2,7 +2,7 @@
 
 namespace BloonsProject
 {
-    public class ConsoleController : IProgramController
+    public class ConsoleController : IProgramController // Example of how interface can be utilized for another project - Demonstrates understanding of OOP principles and interfaces.
     {
         private bool isRunning;
 

@@ -16,26 +16,27 @@ namespace BloonsProject
         {
             _window = window;
             _map = map;
-            SplashKit.LoadFont("BloonFont", "./Resources/BloonFont.ttf");
+            SplashKit.LoadFont("BloonFont", "./Resources/BloonFont.ttf"); // Load custom font.
         }
 
         public void RenderEntities(BloonController bloonController, TowerController towerController, TowerGuiOptions towerOptions, TowerTargetingGuiOptions targetOptions)
         {
-            _entityRenderer.RenderBloons(bloonController, _map);
+            _entityRenderer.RenderBloons(bloonController, _map); // Render bloons, towers and projectiles.
             _entityRenderer.RenderTowers(towerController);
             _entityRenderer.RenderTowerProjectiles();
         }
 
         public void RenderGuiTowerOptions(TowerPlacerGuiOptions towerPlacer, TowerController towerController, MapController mapController)
         {
-            // Draw tower select images
+            // Render tower select images
             foreach (var (towerPositionInGui, towerName) in towerPlacer.ClickableShapes)
             {
+                // Render towers in GUI that can be placed.
                 SplashKit.DrawBitmap(towerPlacer.ClickableShapeImage(towerName), towerPositionInGui.X, towerPositionInGui.Y);
 
                 if (towerPlacer.SelectedInGui != towerName) continue;
 
-                // Draw outline around selected tower select image
+                // Render outline around selected tower select image
                 _guiRenderer.HighlightTowerInGui(towerPlacer, towerPositionInGui);
 
                 // Create a new tower depending on the selected tower and write tower description in GUI
@@ -52,17 +53,16 @@ namespace BloonsProject
 
         public void RenderMap()
         {
-            SplashKit.ClearScreen();
-            SplashKit.DrawBitmapOnWindow(_window, SplashKit.LoadBitmap("map", _map.BloonsMap), 0, 0);
+            SplashKit.DrawBitmapOnWindow(_window, SplashKit.LoadBitmap("map", _map.BloonsMap), 0, 0); // Renders map and GUI
             SplashKit.DrawBitmapOnWindow(_window, Gui.GuiBitmap, 800, 0);
-            SplashKit.DrawText(_bloonSingleton.Player.Round.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 25);
+            SplashKit.DrawText(_bloonSingleton.Player.Round.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 25); // Renders money, lives and round.
             SplashKit.DrawText(_bloonSingleton.Player.Money.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 65);
             SplashKit.DrawText(_bloonSingleton.Player.Lives.ToString(), Color.AntiqueWhite, "BloonFont", 20, 950, 100);
         }
 
         public void RenderSelectedTowerOptions(TowerGuiOptions towerOptions, TowerTargetingGuiOptions targetOptions)
         {
-            _towerOptionsRenderer.RenderSelectedTowerOptions(towerOptions, targetOptions);
+            _towerOptionsRenderer.RenderSelectedTowerOptions(towerOptions, targetOptions); // If tower is selected, render it's options (buy, sell, targeting).
         }
     }
 }

@@ -9,14 +9,14 @@ namespace BloonsProject
         {
             TargetingButtonLocations = new Dictionary<Point2D, TowerTargeting>()
             {
-                [new Point2D() { X = 830, Y = 330 }] = TowerTargeting.First,
-                [new Point2D() { X = 900, Y = 330 }] = TowerTargeting.Last,
-                [new Point2D() { X = 970, Y = 330 }] = TowerTargeting.Strong,
-                [new Point2D() { X = 1040, Y = 330 }] = TowerTargeting.Weak
+                [new Point2D() { X = 830, Y = 320 }] = TowerTargeting.First,
+                [new Point2D() { X = 900, Y = 320 }] = TowerTargeting.Last,
+                [new Point2D() { X = 970, Y = 320 }] = TowerTargeting.Strong,
+                [new Point2D() { X = 1040, Y = 320 }] = TowerTargeting.Weak
             };
-            Height = 30;
+            Height = 30; // Dimensions of targeting buttons
             Width = 60;
-            SelectedInGui = TowerTargeting.First;
+            SelectedInGui = TowerTargeting.First; // Initially have targeting set to "first".
         }
 
         public int Height { get; }
@@ -24,7 +24,7 @@ namespace BloonsProject
         public Dictionary<Point2D, TowerTargeting> TargetingButtonLocations { get; }
         public int Width { get; }
 
-        public void ClickShape(Point2D pt)
+        public void ClickShape(Point2D pt) // Selects a button if mouse press location is within the button's dimensions
         {
             foreach (var (position, targetOption) in TargetingButtonLocations)
             {

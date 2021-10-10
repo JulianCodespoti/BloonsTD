@@ -3,7 +3,7 @@ using SplashKitSDK;
 
 namespace BloonsProject.Models.Extensions
 {
-    internal class SplashKitExtensions
+    public class SplashKitExtensions // Linearly interpolates between two points
     {
         private static double Lerp(double firstDouble, double secondDouble, double by)
         {
@@ -17,8 +17,8 @@ namespace BloonsProject.Models.Extensions
             return new Point2D() { X = retX, Y = retY };
         }
 
-        public static Point2D PointFromVector(VectorExtension vector) => new Point2D() { X = vector.X, Y = vector.Y };
+        public static VectorExtension VectorFromPoint(Point2D point) => new VectorExtension() { X = (float)point.X, Y = (float)point.Y }; // Convert Point2D to a serializable coordinate system.
 
-        public static VectorExtension VectorFromPoint(Point2D point) => new VectorExtension() { X = (float)point.X, Y = (float)point.Y };
+        public static Point2D PointFromVector(VectorExtension vector) => new Point2D() { X = vector.X, Y = vector.Y };  // Gives point from vector
     }
 }

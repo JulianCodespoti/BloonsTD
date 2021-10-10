@@ -4,7 +4,7 @@ namespace BloonsProject
 {
     public class TargetWeak : ITarget
     {
-        public TowerTargeting TargetType => TowerTargeting.Weak;
+        public TowerTargeting TargetType => TowerTargeting.Weak; // Returns the bloon with the least health.
 
         public Bloon BloonToTarget(List<Bloon> bloons)
         {

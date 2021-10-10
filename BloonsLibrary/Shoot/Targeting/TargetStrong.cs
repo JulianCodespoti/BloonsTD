@@ -4,7 +4,7 @@ namespace BloonsProject
 {
     public class TargetStrong : ITarget
     {
-        public TowerTargeting TargetType => TowerTargeting.Strong;
+        public TowerTargeting TargetType => TowerTargeting.Strong; // Returns the bloon with the most health.
 
         public Bloon BloonToTarget(List<Bloon> bloons)
         {

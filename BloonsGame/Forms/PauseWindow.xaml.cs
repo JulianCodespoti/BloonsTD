@@ -17,14 +17,14 @@ namespace BloonsGame
         private void OnContinueButtonClick(object sender, RoutedEventArgs routedEventArgs)
         {
             _programController.SetIsGameRunningTo(false);
-            Close();
+            Close(); // When the player presses continue, the game is set to resume.
         }
 
         private void OnExitButtonClick(object sender, RoutedEventArgs routedEventArgs)
         {
             Process.Start(Process.GetCurrentProcess().ProcessName, "");
             Close();
-            Process.GetCurrentProcess().Kill();
+            Process.GetCurrentProcess().Kill(); // If the user presses exit, the process is closed and restarted.
         }
     }
 }

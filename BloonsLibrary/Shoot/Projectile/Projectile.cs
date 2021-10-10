@@ -12,9 +12,9 @@ namespace BloonsProject
             ProjectileStationaryTimeSpent = 0;
         }
 
-        public Point2D ProjectileDestination { get; set; }
-        public Point2D ProjectileLocation { get; set; }
-        public IShotType ProjectileShotType { get; set; }
-        public double ProjectileStationaryTimeSpent { get; set; }
+        public Point2D ProjectileDestination { get; set; } // Projectile endpoint
+        public Point2D ProjectileLocation { get; set; } // Projectile current point
+        public IShotType ProjectileShotType { get; set; } // Shot type of projectile (eg dart shot, laser shot, sniper shot)
+        public double ProjectileStationaryTimeSpent { get; set; } // When projectile endpoint is reached, remain at the endpoint and keep track of it with this property.
     }
 }

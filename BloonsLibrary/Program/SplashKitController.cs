@@ -23,7 +23,7 @@ namespace BloonsProject
         public SplashKitController(Map map)
         {
             _map = map;
-            _window = new Window("Bloons", 1135, 560);
+            _window = new Window("Bloons", 1135, 550);
             _renderer = new Renderer(_window, _map);
         }
 
@@ -44,30 +44,30 @@ namespace BloonsProject
                 SplashKit.RefreshScreen(60);
                 SplashKit.ProcessEvents();
 
-                if (_isPaused) continue;
+                if (_isPaused) continue; // If game is paused, stop running the game loop.
 
-                DrawBloonsGame();
-                GameEvents();
+                DrawBloonsGame(); // Renders everything
+                GameEvents(); // Checks game events
 
-                if (SplashKit.MouseClicked(MouseButton.LeftButton))
+                if (SplashKit.MouseClicked(MouseButton.LeftButton)) // If a left click is made, iterate through events relating to the selection of a tower.
                 {
                     SelectedTowerEvents();
                 }
 
-                if (SplashKit.MouseClicked(MouseButton.RightButton))
+                if (SplashKit.MouseClicked(MouseButton.RightButton))  // If a right click is made, iterate through events relating to a tower's debug mode.
                 {
                     SelectedDebugTowerEvents();
                 }
 
-                if (SplashKit.KeyTyped(KeyCode.PKey))
+                if (SplashKit.KeyTyped(KeyCode.PKey)) // If p is pressed, pause.
                 {
-                    PauseEventHandler?.Invoke();
+                    PauseEventHandler?.Invoke(); // Communicate to WPF project to display the pause screen.
                     SetIsGameRunningTo(true);
                 }
             } while (!SplashKit.WindowCloseRequested("Bloons"));
         }
 
-        private void DrawBloonsGame()
+        private void DrawBloonsGame() // Renders the game
         {
             _renderer.RenderMap();
             _renderer.RenderGuiTowerOptions(_towerPlacer, _towerController, _mapController);
@@ -75,9 +75,9 @@ namespace BloonsProject
             _renderer.RenderSelectedTowerOptions(_towerOptions, _targetOptions);
         }
 
-        private void GameEvents()
+        private void GameEvents() // Checks game events
         {
-            if (_gameController.DepletedLives())
+            if (_gameController.HaveLivesDepleted())
             {
                 SplashKit.CloseWindow("Bloons");
                 LoseEventHandler?.Invoke();
@@ -85,12 +85,12 @@ namespace BloonsProject
 
             _towerController.UpgradeOrSellSelectedTower(_towerController, _towerOptions);
             _towerController.ChangeTowerTargeting(_targetOptions, _towerController);
-            _gameController.LoseLives(_map);
+            _gameController.LoseLivesAndRemoveBloons(_map);
             _towerController.ShootBloons(_map);
             _bloonController.CheckBloonHealth();
             _towerController.TickAllTowers();
 
-            if (_gameController.CheckBloons() && _bloonController.BloonsOnScreen(_window) == 0)
+            if (_gameController.RequiredBloonsHaveSpawned() && _bloonController.BloonsOnScreen(_window) == 0)
             {
                 _gameState.Player.Round++;
                 _gameState.Player.Money += 20;
@@ -100,12 +100,12 @@ namespace BloonsProject
             _bloonController.ProcessBloons(_gameState.Player, _map);
         }
 
-        private void SelectedDebugTowerEvents()
+        private void SelectedDebugTowerEvents() // Events relating to a tower's debug mode.
         {
             _mapController.ClickOnMap(SplashKit.MousePosition(), _towerOptions, _targetOptions, MouseClickType.right);
         }
 
-        private void SelectedTowerEvents()
+        private void SelectedTowerEvents() // Events relating to a tower that has been selected
         {
             _mapController.ClickOnMap(SplashKit.MousePosition(), _towerOptions, _targetOptions, MouseClickType.left);
             if (_mapController.CanPlaceTowerOnMap(SplashKit.MousePosition(), _map))
@@ -123,7 +123,7 @@ namespace BloonsProject
             }
         }
 
-        private void StartUpGame()
+        private void StartUpGame() // Start game and set the initial round.
         {
             _bloonStopWatch.Start();
             _gameController.SetRound(_map, _gameState.Player.Round);

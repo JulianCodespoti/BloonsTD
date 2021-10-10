@@ -7,22 +7,22 @@ namespace BloonsProject
     {
         public TowerGuiOptions()
         {
-            UpgradeOptionsInGui = new Dictionary<Point2D, string>
+            UpgradeOptionsInGui = new Dictionary<Point2D, string> // Location of upgrade buttons.
             {
-                [new Point2D { X = 850, Y = 360 }] = "Upgrade Range",
-                [new Point2D { X = 990, Y = 360 }] = "Upgrade Firerate",
-                [new Point2D { X = 920, Y = 460 }] = "Sell"
+                [new Point2D { X = 850, Y = 355 }] = "Upgrade Range",
+                [new Point2D { X = 990, Y = 355 }] = "Upgrade Firerate",
+                [new Point2D { X = 920, Y = 455 }] = "Sell"
             };
-            Height = 50;
+            Height = 50; // Dimensions of buttons
             Width = 100;
             SelectedInGui = "none";
-            SellTowerBitmap = new Bitmap("Sell",
+            SellTowerBitmap = new Bitmap("Sell", // Bitmaps for buttons.
                 "./Resources/sell tower.png");
             UpgradeFirerateBitmap = new Bitmap("Firerrate",
                 "./Resources/firerate upgrade.png");
             UpgradeRangeBitmap = new Bitmap("Range",
                 "./Resources/range upgrade.png");
-            ClickableShapeImages = new List<Bitmap>() { UpgradeRangeBitmap, UpgradeFirerateBitmap, SellTowerBitmap };
+            ClickableShapeImages = new List<Bitmap>() { UpgradeRangeBitmap, UpgradeFirerateBitmap, SellTowerBitmap }; // List of buttons.
         }
 
         public List<Bitmap> ClickableShapeImages { get; set; }
@@ -34,14 +34,14 @@ namespace BloonsProject
         public Bitmap UpgradeRangeBitmap { get; }
         public int Width { get; }
 
-        public void ClickShape(Point2D pt)
+        public void ClickShape(Point2D pt) // Selects a button if mouse press location is within the button's dimensions
         {
             foreach (var (position, towerOption) in UpgradeOptionsInGui)
             {
                 if (pt.X >= position.X && pt.X <= Width + position.X && pt.Y >= position.Y &&
                     pt.Y <= position.Y + Height)
                 {
-                    SelectedInGui = towerOption;
+                    SelectedInGui = towerOption; // Sets SelectedInGui to the selected button.
                     break;
                 }
                 SelectedInGui = "none";

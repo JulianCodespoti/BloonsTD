@@ -8,4 +8,8 @@
     <Folder Include="Maps\MapJsons\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="RandomNameGeneratorLibrary" Version="1.2.2" />
+  </ItemGroup>
+
 </Project>

@@ -16,20 +16,20 @@ namespace BloonsGame
             {
                 plural = " round.";
             }
-            RoundSurvivedLabel.Content = "You have survived " + gameState.Player.Round + plural;
+            RoundSurvivedLabel.Content = "You have survived " + gameState.Player.Round + plural; // Displays the rounds that the player survived in the loss screen.
             RoundSurvivedLabel.Visibility = Visibility.Visible;
         }
 
         private void OnExitButtonClick(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            Environment.Exit(0); // Close the game when the user press
         }
 
         private void PlayAgainButton_OnClickButtonClick(object sender, RoutedEventArgs e)
         {
             Process.Start(Process.GetCurrentProcess().ProcessName, "");
             Close();
-            Process.GetCurrentProcess().Kill();
+            Process.GetCurrentProcess().Kill(); // If the user presses play again, the process is closed and restarted.
         }
     }
 }

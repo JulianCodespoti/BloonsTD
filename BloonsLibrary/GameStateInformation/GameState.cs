@@ -3,7 +3,7 @@ using Color = SplashKitSDK.Color;
 
 namespace BloonsProject
 {
-    public class GameState
+    public class GameState // Singleton containing information about the gamestate.
     {
         private static GameState _state;
         public readonly List<Bloon> Bloons = new List<Bloon>();

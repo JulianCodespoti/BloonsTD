@@ -1,7 +1,7 @@
 ﻿namespace BloonLibrary.Extensions
 {
     [System.Serializable]
-    public class VectorExtension
+    public class VectorExtension // Serializable coordinate class, since Point2D cannot be serialized.
     {
         public float X { get; set; }
         public float Y { get; set; }

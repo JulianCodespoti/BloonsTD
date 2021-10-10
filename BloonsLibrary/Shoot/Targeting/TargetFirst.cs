@@ -6,7 +6,7 @@ namespace BloonsProject
     {
         public TowerTargeting TargetType => TowerTargeting.First;
 
-        public Bloon BloonToTarget(List<Bloon> bloons)
+        public Bloon BloonToTarget(List<Bloon> bloons) // Returns the bloon that has travelled the most distance.
         {
             Bloon targetBloon = null;
             foreach (var bloon in bloons)

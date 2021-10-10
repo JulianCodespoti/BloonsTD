@@ -18,14 +18,14 @@ namespace BloonsProject
             Name = name;
         }
 
-        public string BloonsMap { get; }
-        public List<VectorExtension> Checkpoints { get; }
-        public int Height { get; }
-        public int Length { get; }
-        public string Name { get; }
-        public int TrackWidthRadius { get; }
+        public string BloonsMap { get; } // Bitmap directory for map
+        public List<VectorExtension> Checkpoints { get; } // Map checkpoint locations
+        public int Height { get; } // Height of map
+        public int Length { get; } // Length of map
+        public string Name { get; } // Map name
+        public int TrackWidthRadius { get; } // Radius of the track the bloons follow
 
-        public Dictionary<Color, int> BloonsPerRound(int round)
+        public Dictionary<Color, int> BloonsPerRound(int round) // Bloons to be spawned each round for each type.
         {
             const int bloonAmount = 1;
             var currentRound = new Dictionary<Color, int>();
