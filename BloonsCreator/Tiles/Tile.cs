@@ -1,5 +1,4 @@
 ﻿using SplashKitSDK;
-using Color = SplashKitSDK.Color;
 
 namespace BloonsCreator
 {

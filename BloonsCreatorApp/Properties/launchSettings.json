@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "BloonsCreator": {
+    "BloonsCreatorApp": {
       "commandName": "Project",
       "workingDirectory": "C:\\Users\\julia\\OneDrive\\Desktop\\BloonsGame\\BloonsLibrary"
     }

@@ -14,13 +14,14 @@ namespace BloonsProject
             for (var i = 0; i < map.Checkpoints.Count - 1; i++)
             {
                 var line = SplashKit.LineFrom(SplashKitExtensions.PointFromVector(map.Checkpoints[i]), SplashKitExtensions.PointFromVector(map.Checkpoints[i + 1])); // Draws a line between one checkpoint and the next. Iterates through all checkpoints
-                if (SplashKit.PointLineDistance(location, line) < map.TrackWidthRadius || // If the tower is within the maps track width of the line
-                    SplashKit.PointLineDistance(new Point2D { X = location.X + Tower.Length, Y = location.Y + Tower.Length }, line) <
-                    map.TrackWidthRadius ||
+                if (SplashKit.PointLineDistance(location, line) < map.TrackWidthRadius || // If each four points of the tower's rectangular hitbox is within the radius of the line, return false
+                    SplashKit.PointLineDistance(new Point2D { X = location.X + Tower.Length, Y = location.Y + Tower.Length }, line) < map.TrackWidthRadius ||
+                    SplashKit.PointLineDistance(new Point2D { X = location.X, Y = location.Y + Tower.Length }, line) < map.TrackWidthRadius ||
+                    SplashKit.PointLineDistance(new Point2D { X = location.X + Tower.Length, Y = location.Y }, line) < map.TrackWidthRadius ||
                     location.X > map.Length - Tower.Length || // If the tower is outside of the whole map.
                     location.X < 0 ||
                     location.Y < 0 ||
-                    location.Y > map.Height
+                    location.Y > map.Height - Tower.Length
                 )
                     return false; // Then tower can't be placed
             }

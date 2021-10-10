@@ -1,7 +1,5 @@
-﻿using System;
+﻿using SplashKitSDK;
 using System.Collections.Generic;
-using System.Threading;
-using SplashKitSDK;
 
 namespace BloonsCreator
 {

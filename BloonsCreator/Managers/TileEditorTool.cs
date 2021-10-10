@@ -33,27 +33,40 @@ namespace BloonsCreator
         {
             if (mousePosition.Y >= 550) return;
 
-            var tileToAdd = TileFactory.CreateTileOfType(SelectedTileType);
-            tileToAdd.Position = mousePosition;
-            var gridPoints = GridCalculations.GetGridPoints(tileToAdd.Width, tileToAdd.Height);
-            var gridPoint = gridPoints.FirstOrDefault(p => SplashKit.PointInRectangle(tileToAdd.Position,
-                new Rectangle { Width = tileToAdd.Width, Height = tileToAdd.Height, X = p.X, Y = p.Y }));
-            var existingTile = _creatorState.Tiles.FirstOrDefault(t => t.Position.X == gridPoint.X && t.Position.Y == gridPoint.Y);
-            tileToAdd.Position = gridPoint;
-            if (tileToAdd.TileType == TileType.Checkpoint)
+            var tileToAdd = GetTileOnGrid(mousePosition);
+            var existingTile = _creatorState.Tiles.FirstOrDefault(t => t.Position.X == tileToAdd.Position.X && t.Position.Y == tileToAdd.Position.Y);
+
+            if (SelectedTileType == TileType.Checkpoint)
             {
                 if (!CanAddCheckpointTile(tileToAdd as CheckpointTile)) return;
+
                 var checkpointTile = tileToAdd as CheckpointTile;
                 _creatorState.Checkpoints.Add(checkpointTile.Checkpoint);
             }
-
-            if (existingTile is not null)
+            else if (SelectedTileType == TileType.Normal)
             {
-                if (tileToAdd.GetType() == existingTile.GetType()) return;
-                RemoveTile(existingTile);
+                if (!CanRemoveCheckpointTile(existingTile)) return;
+                RemoveCheckpoint(existingTile);
             }
-
+            RemoveTile(existingTile);
             _creatorState.Tiles.Add(tileToAdd);
+        }
+
+        public Tile GetTileOnGrid(Point2D mousePosition)
+        {
+            var tileToAdd = TileFactory.CreateTileOfType(SelectedTileType);
+            var gridPoints = GridCalculations.GetGridPoints(tileToAdd.Width, tileToAdd.Height);
+            var gridPoint = gridPoints.FirstOrDefault(p => SplashKit.PointInRectangle(mousePosition,
+                new Rectangle { Width = tileToAdd.Width, Height = tileToAdd.Height, X = p.X, Y = p.Y }));
+            tileToAdd.Position = gridPoint;
+            return tileToAdd;
+        }
+
+        public bool CanRemoveCheckpointTile(Tile tile)
+        {
+            var checkpointTiles = _creatorState.Tiles.Where(t => t.TileType == TileType.Checkpoint);
+            if (checkpointTiles.Count() == 0) return false;
+            return tile.Position.X == checkpointTiles.Last().Position.X && tile.Position.Y == checkpointTiles.Last().Position.Y;
         }
 
         public bool CanAddCheckpointTile(CheckpointTile checkpointTile)
@@ -64,7 +77,7 @@ namespace BloonsCreator
             var distanceBetweenPoints = Math.Sqrt(
                 Math.Pow((lastCheckPointTile.Checkpoint.X - checkpointTile.Checkpoint.X), 2) +
                 Math.Pow((lastCheckPointTile.Checkpoint.Y - checkpointTile.Checkpoint.Y), 2));
-            return distanceBetweenPoints <= lastCheckPointTile.Height;
+            return distanceBetweenPoints <= lastCheckPointTile.Height && distanceBetweenPoints != 0;
         }
 
         public TileButton CurrentSelectedTileButton()
@@ -74,20 +87,20 @@ namespace BloonsCreator
 
         public void InitializeAllTilesAsGreen()
         {
-            var gridPoints = GridCalculations.GetGridPoints(50, 50);
-            foreach (Point2D gridPoint in gridPoints)
+            foreach (Point2D gridPoint in GridCalculations.GetGridPoints(50, 50))
             {
                 _creatorState.Tiles.Add(new GrassTile() { Position = gridPoint });
             }
         }
 
+        public void RemoveCheckpoint(Tile tile)
+        {
+            var tileAsCheckpoint = tile as CheckpointTile;
+            _creatorState.Checkpoints.Remove(tileAsCheckpoint.Checkpoint);
+        }
+
         public void RemoveTile(Tile tile)
         {
-            if (tile.TileType == TileType.Checkpoint)
-            {
-                var tileAsCheckpoint = tile as CheckpointTile;
-                _creatorState.Checkpoints.Remove(tileAsCheckpoint.Checkpoint);
-            }
             foreach (var t in _creatorState.Tiles.ToList()
                 .Where(t => t.Position.X == tile.Position.X && t.Position.Y == tile.Position.Y))
             {

@@ -93,7 +93,7 @@ namespace BloonsProject
             if (_gameController.RequiredBloonsHaveSpawned() && _bloonController.BloonsOnScreen(_window) == 0)
             {
                 _gameState.Player.Round++;
-                _gameState.Player.Money += 20;
+                _gameState.Player.Money += 50;
                 _gameController.SetRound(_map, _gameState.Player.Round);
             }
 

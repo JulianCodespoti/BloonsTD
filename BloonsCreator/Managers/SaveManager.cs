@@ -1,15 +1,14 @@
-﻿using System;
-using BloonsProject;
+﻿using BloonsProject;
 using BloonsProject.Models.Extensions;
 using H.Utilities;
+using RandomNameGeneratorLibrary;
 using SplashKitSDK;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text.Json;
-using RandomNameGeneratorLibrary;
 using Bitmap = System.Drawing.Bitmap;
 using Rectangle = System.Drawing.Rectangle;
 
@@ -18,17 +17,23 @@ namespace BloonsCreator
     public class SaveManager : IObserver
     {
         private readonly CreatorState _creatorState = CreatorState.GetClickHandlerEvents();
+        private string _mapName;
 
-        public static void CreateMapFor(string name, Bitmap screenshot, List<Point2D> tileManagerCheckpoints)
+        public SaveManager(string mapName)
+        {
+            _mapName = mapName;
+        }
+
+        public void CreateMapFor(Bitmap screenshot, List<Point2D> tileManagerCheckpoints)
         {
             var serializablePoints = tileManagerCheckpoints.Select(t => SplashKitExtensions.VectorFromPoint(t)).ToList();
-            var mapToSave = new Map($"../BloonsLibrary/Resources/{name}.jpeg", screenshot.Width, screenshot.Height, 25, serializablePoints, name);
+            var mapToSave = new Map($"../BloonsLibrary/Resources/{_mapName}.jpeg", screenshot.Width, screenshot.Height, 25, serializablePoints, _mapName);
 
-            using var createStream = File.Create($"../BloonsLibrary/Maps/MapJsons/{name}.json");
+            using var createStream = File.Create($"../BloonsLibrary/Maps/MapJsons/{_mapName}.json");
             JsonSerializer.SerializeAsync(createStream, mapToSave);
         }
 
-        public static Bitmap TakeScreenshotOf(Window window, string name)
+        public Bitmap TakeScreenshotOf(Window window, string name)
         {
             var screenShot = Screenshoter.Shot(new Rectangle(window.X, window.Y, window.Width, window.Height - 150));
             screenShot.Save($"../BloonsLibrary/Resources/{name}.jpeg", ImageFormat.Jpeg);
@@ -38,10 +43,8 @@ namespace BloonsCreator
         public void Update(ISubject subject)
         {
             if (_creatorState.Checkpoints.Count() <= 1) return;
-
-            var name = RandomPlaceNameExtensions.GenerateRandomPlaceName(new Random());
-            var screenshot = SaveManager.TakeScreenshotOf(_creatorState.Window, name);
-            SaveManager.CreateMapFor(name, screenshot, _creatorState.Checkpoints);
+            var screenshot = TakeScreenshotOf(_creatorState.Window, _mapName);
+            CreateMapFor(screenshot, _creatorState.Checkpoints);
             Environment.Exit(0);
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using SplashKitSDK;
+﻿using SplashKitSDK;
 
 namespace BloonsCreator
 
