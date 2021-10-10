@@ -36,8 +36,6 @@ To install SplashKit, follow the link https://www.splashkit.io/articles/installa
 
 - Save the changes.
 
-- Build the solution.
-- 
 - Run "BloonsGame" at the top of the window.
 
 # Images of the game running
