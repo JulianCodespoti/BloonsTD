@@ -43,6 +43,7 @@ namespace BloonsCreator
 
         public void OnButtonClicked(Button button)
         {
+            if (!(button is SaveButton)) return;
             if (_creatorState.Checkpoints.Count() <= 1) return;
             var screenshot = TakeScreenshotOf(_creatorState.Window, _mapName);
             CreateMapFor(screenshot, _creatorState.Checkpoints);

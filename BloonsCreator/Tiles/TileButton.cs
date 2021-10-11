@@ -11,6 +11,6 @@ namespace BloonsCreator
             Position = position;
         }
 
-        public TileType TileType { get; set; }
+        public TileType TileType { get; }
     }
 }

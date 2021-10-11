@@ -132,6 +132,65 @@ The TileFactory's implementations in my code can be seen below:
 var tileToAdd = TileFactory.CreateTileOfType(SelectedTileType);
 ```
 
+## Strategy
+The Strategy design pattern essentially allows you encase a variety of algorithms together, isolated from the program, and allow the ability to select the desired algorithm depending on situation during runtime. Thus, it became clear that if i were to implement various targeting options for each tower, that the strategy pattern would be ideal in doing so. 
+In order to achieve this, I have implemented the interface **ITarget**.
+```csharp
+public interface ITarget
+{
+    TowerTargeting TargetType { get; }
+
+    Bloon BloonToTarget(List<Bloon> bloons);
+}
+```
+The various classes the implement the interface must be able to return a bloon they wish to target, depending on the type of targeting, as well as a way of identifying what the tower's targeting type is, through the use of the enum, **TowerTargeting**.
+
+For instance, if the tower's targeting type is first, the following calculations are utilized in order to determine which bloon the tower will target:
+```csharp
+ public Bloon BloonToTarget(List<Bloon> bloons) // Returns the bloon that has travelled the least distance.
+    {
+        Bloon targetBloon = null;
+        foreach (var bloon in bloons)
+        {
+            targetBloon ??= bloon;
+            if (targetBloon.DistanceTravelled > bloon.DistanceTravelled)
+            {
+                targetBloon = bloon;
+            }
+        }
+
+        return targetBloon;
+    }
+```
+The type of targeting a tower is set to will be controlled in the UI, whereby selecting a tower and clicking on the desired targeting mode will in turn change the tower's targeting property.
+
+![Image](/BloonsGame/GitHubImages/Targeting.png?raw=true) 
+
+By default, the tower's targeting it set to **First**. However, the program is able to determine the trajectory of the bloon's projectile depending on the type of targeting. The tower knows which bloons to target, and the projectile manager utilizes this information to determine the endpoint for the projectile, and linearly interpolates said projectile between this and the tower's position.
+
+```csharp
+public Point2D GetProjectileEndPoint(Bloon bloon, Tower tower)
+{
+    var towerToBloonAngle =
+                Math.Atan((bloon.Position.Y - tower.Position.Y) / (bloon.Position.X - tower.Position.X)) + Math.PI; // Calculates angle between tower and bloon.
+
+    if (bloon.Position.X > tower.Position.X) // If the bloon is either to the right or left of the tower, perform a different calculation for the angle.
+    {
+        towerToBloonAngle = Math.Atan((bloon.Position.Y - tower.Position.Y) /
+                                        (bloon.Position.X - tower.Position.X));
+    }
+    ; var projectileEndPoint = new Point2D() // Extrapolate the distance from the tower to the bloon, to the end of the towers radius in the same angle.
+    {
+        X = tower.Position.X + (tower.Range * Math.Cos(towerToBloonAngle)),
+        Y = tower.Position.Y + (tower.Range * Math.Sin(towerToBloonAngle))
+    };
+    projectileEndPoint.X -= tower.ShotType.ProjectileWidth / 2; // Bitmap draws from the top-left of the image. Re-configure bitmap so that the origin of the bitmap is where it is drawn and calculated from.
+    projectileEndPoint.Y -= tower.ShotType.ProjectileLength / 2;
+    return projectileEndPoint;
+}
+```
+Thus, by returning the bloon to target through the use of the strategy pattern, the projectile manager can take this value in through it's method's constructor and successfully determine the endpoint for the projectile's trajectory.
+
 
 # How to Run
 This is a step by step guide on running this program.
@@ -177,3 +236,25 @@ To install SplashKit, follow the link https://www.splashkit.io/articles/installa
 ## Loss Screen
 
 ![Image](/BloonsGame/GitHubImages/Image9.png?raw=true)
+
+# Images of the map creator running
+
+## Starting screen
+
+![Image](/BloonsGame/GitHubImages/MapCreatorHomeScreen.png?raw=true)
+## Map Interface
+
+![Image](/BloonsGame/GitHubImages/MapInterface.png?raw=true)
+## Creating map by adding track tiles
+
+![Image](/BloonsGame/GitHubImages/CreatingMap.png?raw=true)
+## Removing track tiles
+
+![Image](/BloonsGame/GitHubImages/EditingTrack.png?raw=true)
+## Playing Bloons Game with custom made map
+
+
+![Image](/BloonsGame/GitHubImages/PlayingWithMap.png?raw=true)
+
+
+

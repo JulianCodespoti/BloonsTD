@@ -109,7 +109,7 @@ namespace BloonsCreator
 
         public void OnButtonClicked(Button button)
         {
-            var subjectAsTileButton = button as TileButton;
+            if (button is not TileButton subjectAsTileButton) return;
             SelectedTileType = subjectAsTileButton.TileType;
         }
     }

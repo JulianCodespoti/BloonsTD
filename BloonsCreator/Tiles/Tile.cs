@@ -13,9 +13,9 @@ namespace BloonsCreator
         }
 
         public Bitmap Bitmap { get; }
-        public int Height { get; set; }
-        public TileType TileType { get; set; }
+        public int Height { get; }
+        public TileType TileType { get; }
         public Point2D Position { get; set; }
-        public int Width { get; set; }
+        public int Width { get; }
     }
 }
