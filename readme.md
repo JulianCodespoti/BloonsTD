@@ -3,7 +3,7 @@
 A recreation of the game "Bloons Tower Defense", written in C# and using both WPF and Splashkit.
 
 ![Image](/BloonsGame/GitHubImages/Image3.png?raw=true)
-# Description
+# Bloons Game Description
 
 BloonsTD. A fundamental game that shaped my childhood, that I would spend countless of playing as the days went by. Thus, it became evident that for my University project, I would recreate none other than the game itself.
 
@@ -23,8 +23,114 @@ Through the use of SplashKit - a software toolkit produced by my University that
 - A game loop method that runs continuously during gameplay.
 
 
-# Map Editor
+# Map Editor Description
 
+To compliment the program, a map editor has been included in the solution, allowing the user to both create, as well as edit maps. These maps can then be selected in the BloonsGame program and played with.
+
+Akin to the BloonsGame project, both Splashkit and WPF have been utilized throughout the design of the Map Creator, whereby the initial interface is set up with WPF, whereas the Map Creator UI itself is set up with Splashkit. The following features of the map creator tool are only some of the various implementations I have incorporated in the project: 
+
+- A graphical interface which allows both the selection and deselection of track tiles.
+- Algorithms put in place to prevent the user from adding track tiles that don't align with the current path of the track, as well as ensuring the tiles that are being removed must be removed in order from most recently placed tiles.
+- Event handlers which get invoked when a button is pressed (whereby the 3 buttons are the save button, and the two reference tile buttons).
+- A series of calculations that can determine the verticle and horizontal grid lines, as well as the grid points, for any window or individual grid dimension.
+- Various design patterns, such as factory patterns for the creation of tiles and tilebuttons, as well as a singleton for the tile information.
+- Method of saving the map state by serializing all of the information and saving the json file into the folder where the Bloons Game processes these maps.
+
+# Design Patterns Included In Solution
+
+When initially creating the game, knowledge of topics such as design patterns, clean architecture, abstraction, polymorphism and various Object Orientating Programming componenets were scarce. Thus, it became evident that in order to produce a game that could be both easy to maintain, as well as flexible, a solid foundation would be required. In order to achieve this, the application would require minimal coupling, as well as appropriate abstraction, to ensure this would be met.
+
+## Design patterns: 
+To ensure that the process for developing the game remained clean and efficient, various design patterns have been incorporated, as they not only allow you to build software faster, but utilize methodologies of doing so that have been rigorously tested and put into practice many, many times. These patterns ultimately consist of generalized solutions to problems that are commonly faced in coding, and provide a template to solving said problem that can be utilized in many situations.
+
+The following are the design patterns that have been used in my code. With them will be an explanation of the pattern, how I've incorporated it in my code, and the reasoning for doing so:
+
+## Singleton
+The Singleton design pattern essentially serves as a way of producing one instance of a class that can be used as a global point of access to the object. Thus, it can be utilized effectively in a program that requires multiple instances of a class throughout said program.
+The Singleton pattern works by having a static member in the singleton class that maintians a reference to the instance, as well as a method that returns the aforementioned static member.
+Within my Bloons Game project, I found that I continually referenced the same various objects all thorughout my code, thus, it became clear to me that the Singleton design pattern would help solve this issue. Additionally, when analysing my code, it further became clear that the objects I would continually reuse predominately related to information regarding the game state, consequently, I decided to name the singleton "GameState" and provide it with the various information throughout my program that incorporated the game state, such as the list of bloons, list of towers, player information, projectile information and more. This information can be seen in the following snippet, where "_state" is the static member.
+``` csharp
+private static GameState _state;
+public readonly List<Bloon> Bloons = new List<Bloon>();
+public readonly List<Tower> Towers = new List<Tower>();
+public Dictionary<Color, int> BloonsSpawned = new Dictionary<Color, int>();
+public Dictionary<Color, int> BloonsToBeSpawned = new Dictionary<Color, int>();
+public readonly Player Player = new Player();
+public readonly ProjectileManager ProjectileManager = new ProjectileManager();
+```
+The function "GetGameStateInstance" serves as a global point of access to the object:
+``` csharp
+public static GameState GetGameStateInstance()
+{
+    if (_state == null)
+    {
+        lock (Locker)
+        {
+            if (_state == null)
+            {
+                _state = new GameState();
+            }
+        }
+    }
+
+    return _state;
+}
+```
+
+## Factory
+The Factory design pattern is a revolves around producing a **factory** object that creates other objects. Its benefit is that it has the capacity to create new objects whilst conjointly hiding the instantiation logic from the user. I found that whilst coding my game, at one point I needed to produce an instance of a "tower", depending on the type of tower the user had selected. Thus, I in turn developed the "TowerFactory" class, which would take in a tower name and produce a new instance of the corresponding tower. The following is a snippet of the Factory design pattern in my code:
+```csharp
+public static class TowerFactory
+{
+    public static Tower CreateTowerOfType(string tower)
+    {
+        if (tower == DartTower.Name) return new DartTower();
+
+        if (tower == LaserTower.Name) return new LaserTower();
+
+        if (tower == SniperTower.Name) return new SniperTower();
+
+        throw new Exception("You are trying to create a tower type that does not exist.");
+    }
+}
+```
+Here is how I have utilized the aforementioned **factory** in my code.
+```csharp
+// Create a new tower depending on the selected tower and write tower description in GUI
+var selectedTower = TowerFactory.CreateTowerOfType(towerPlacer.SelectedInGui);
+_guiRenderer.WriteTowerDescription(towerPlacer, selectedTower);
+```
+Additionally, I have further utilized the factory method throughout my Map Creator tool, whereby I have produced a factory for both the tile buttons, as well as the tiles themselves. Initially, I had developed a class for the **Track tile buttons**, as well as the **Grass tile buttons**, however, the classes did not contain any extra implementations that would warrant the need to place their functionalities in an entire class. Thus, I in turn utilized the factory method, to create different versions of the buttons, whilst hiding the instantiation logic from the user, without the need of additionally button classes. 
+```csharp
+public class TileButtonFactory
+{
+    public static TileButton CreateTileOfType(TileType tileType, Point2D position)
+    {
+        if (tileType == TileType.Checkpoint) return new TileButton(TileType.Checkpoint, new Bitmap("stoneBig", "../BloonsLibrary/Resources/stoneBig.png"), ButtonTypes.AddRegularTile, position);
+
+        if (tileType == TileType.Normal) return new TileButton(TileType.Normal, new Bitmap("grassBig", "../BloonsLibrary/Resources/grassBig.png"), ButtonTypes.AddCheckpointTile, position);
+
+        throw new Exception("You are trying to create a tower type that does not exist.");
+    }
+}
+```
+As previously mentioned, I further have a factory for creating the tile objects, so that depending on the selected tile button the user has pressed, I can create an instance of the tile. 
+```csharp
+public class TileFactory
+{
+    public static Tile CreateTileOfType(TileType tileType)
+    {
+        if (tileType == TileType.Checkpoint) return new CheckpointTile();
+
+        if (tileType == TileType.Normal) return new GrassTile();
+
+        throw new Exception("You are trying to create a tower type that does not exist.");
+    }
+```
+The TileFactory's implementations in my code can be seen below:
+```csharp
+var tileToAdd = TileFactory.CreateTileOfType(SelectedTileType);
+```
 
 
 # How to Run
