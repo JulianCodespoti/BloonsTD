@@ -191,6 +191,14 @@ public Point2D GetProjectileEndPoint(Bloon bloon, Tower tower)
 ```
 Thus, by returning the bloon to target through the use of the strategy pattern, the projectile manager can take this value in through it's method's constructor and successfully determine the endpoint for the projectile's trajectory.
 
+# UML Diagrams
+
+## UML Diagram for the BloonsGame Project
+![Image](/BloonsGame/GitHubImages/BloonsLibraryUML.png?raw=true)
+
+## UML Diagram for the Map Creator Project
+![Image](/BloonsGame/GitHubImages/MapCreatorUML.png?raw=true)
+
 
 # How to Run
 This is a step by step guide on running this program.
