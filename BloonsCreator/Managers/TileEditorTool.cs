@@ -6,7 +6,7 @@ using Rectangle = SplashKitSDK.Rectangle;
 
 namespace BloonsCreator
 {
-    public class TileEditorTool : IObserver
+    public class TileEditorTool
     {
         private readonly CreatorState _creatorState = CreatorState.GetClickHandlerEvents();
 
@@ -17,13 +17,12 @@ namespace BloonsCreator
                 TileButtonFactory.CreateTileOfType(TileType.Normal, new Point2D() {X = 100, Y = 575}),
                 TileButtonFactory.CreateTileOfType(TileType.Checkpoint, new Point2D { X = 600, Y = 575 })
         };
-            foreach (var tileButton in TemplateTiles)
+            foreach (TileButton tileButton in TemplateTiles)
             {
-                tileButton.Attach(this);
                 _creatorState.Buttons.Add(tileButton);
             }
-
             SelectedTileType = TileType.Checkpoint;
+            _creatorState.buttonClickEvent += OnButtonClicked;
         }
 
         public TileType SelectedTileType { get; set; }
@@ -108,9 +107,9 @@ namespace BloonsCreator
             }
         }
 
-        public void OnClick(IClickable clickable)
+        public void OnButtonClicked(Button button)
         {
-            var subjectAsTileButton = clickable as TileButton;
+            var subjectAsTileButton = button as TileButton;
             SelectedTileType = subjectAsTileButton.TileType;
         }
     }

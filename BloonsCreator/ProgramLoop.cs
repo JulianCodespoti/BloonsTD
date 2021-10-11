@@ -18,7 +18,6 @@ namespace BloonsCreator
             _creatorState.Window = _window;
             _creatorState.Buttons.Add(_saveButton);
             _saveManager = new SaveManager(mapName);
-            _saveButton.Attach(_saveManager);
             TileEditorTool.InitializeAllTilesAsGreen();
         }
 
@@ -36,13 +35,7 @@ namespace BloonsCreator
 
                 if (SplashKit.MouseClicked(MouseButton.LeftButton))
                 {
-                    foreach (var button in _creatorState.Buttons.Where(button => SplashKit.PointInRectangle(SplashKit.MousePosition(),
-                        new Rectangle()
-                        { Height = button.Height, Width = button.Width, X = button.Position.X, Y = button.Position.Y })))
-                    {
-                        button.PressButton();
-                    }
-
+                    _creatorState.UpdateOnButtonPress();
                     TileEditorTool.AddTileAt(SplashKit.MousePosition());
                 }
 

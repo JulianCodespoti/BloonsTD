@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BloonsCreator
 {
-    public class Button : IClickable
+    public class Button
     {
         public Button(int width, int height, Bitmap templateTileBitmap, ButtonTypes buttonTypes)
         {
@@ -19,29 +19,5 @@ namespace BloonsCreator
         public Bitmap TemplateTileBitmap { get; }
         public int Width { get; }
 
-        private List<IObserver> _observers = new List<IObserver>();
-
-        public void Attach(IObserver observer)
-        {
-            _observers.Add(observer);
-        }
-
-        public void Detach(IObserver observer)
-        {
-            _observers.Remove(observer);
-        }
-
-        public void Notify()
-        {
-            foreach (var observer in _observers)
-            {
-                observer.OnClick(this);
-            }
-        }
-
-        public void PressButton()
-        {
-            Notify();
-        }
     }
 }

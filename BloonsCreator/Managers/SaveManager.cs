@@ -14,7 +14,7 @@ using Rectangle = System.Drawing.Rectangle;
 
 namespace BloonsCreator
 {
-    public class SaveManager : IObserver
+    public class SaveManager
     {
         private readonly CreatorState _creatorState = CreatorState.GetClickHandlerEvents();
         private string _mapName;
@@ -22,6 +22,7 @@ namespace BloonsCreator
         public SaveManager(string mapName)
         {
             _mapName = mapName;
+            _creatorState.buttonClickEvent += OnButtonClicked;
         }
 
         public void CreateMapFor(Bitmap screenshot, List<Point2D> tileManagerCheckpoints)
@@ -40,7 +41,7 @@ namespace BloonsCreator
             return screenShot;
         }
 
-        public void OnClick(IClickable clickable)
+        public void OnButtonClicked(Button button)
         {
             if (_creatorState.Checkpoints.Count() <= 1) return;
             var screenshot = TakeScreenshotOf(_creatorState.Window, _mapName);
