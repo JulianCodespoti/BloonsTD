@@ -108,9 +108,9 @@ namespace BloonsCreator
             }
         }
 
-        public void Update(ISubject subject)
+        public void OnClick(IClickable clickable)
         {
-            var subjectAsTileButton = subject as TileButton;
+            var subjectAsTileButton = clickable as TileButton;
             SelectedTileType = subjectAsTileButton.TileType;
         }
     }

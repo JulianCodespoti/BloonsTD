@@ -2,6 +2,6 @@
 {
     public interface IObserver
     {
-        public void Update(ISubject subject);
+        public void OnClick(IClickable clickable);
     }
 }

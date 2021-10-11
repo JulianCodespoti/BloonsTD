@@ -40,7 +40,7 @@ namespace BloonsCreator
             return screenShot;
         }
 
-        public void Update(ISubject subject)
+        public void OnClick(IClickable clickable)
         {
             if (_creatorState.Checkpoints.Count() <= 1) return;
             var screenshot = TakeScreenshotOf(_creatorState.Window, _mapName);

@@ -1,6 +1,6 @@
 ﻿namespace BloonsCreator
 {
-    public interface ISubject
+    public interface IClickable
     {
         void Attach(IObserver observer);
 
