@@ -7,7 +7,7 @@ namespace BloonsTests
 {
     public class TestGame
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetGameStateInstance();
         private readonly BloonController _bloonController = new BloonController();
         private readonly GameController _gameController = new GameController();
         private readonly Map _map = MapManager.GetAllMaps()[0];

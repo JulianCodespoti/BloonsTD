@@ -8,7 +8,7 @@ namespace BloonsProject
 {
     public class BloonController
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game state singleton.
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game state singleton.
         public int ticksSinceLastSentBloon { get; set; } // Keeps track of the last time a bloon was sent.
 
         public void AddBloon(Bloon bloon) // Adds bloon to the list of bloons in the singleton.

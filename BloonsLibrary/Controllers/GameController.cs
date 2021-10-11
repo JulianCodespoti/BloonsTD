@@ -6,7 +6,7 @@ namespace BloonsProject
 {
     public class GameController
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game State singleton
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game State singleton
 
         public bool RequiredBloonsHaveSpawned() // Determines whether the required number of bloons have spawned.
         {

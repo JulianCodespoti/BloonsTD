@@ -8,7 +8,7 @@ namespace BloonsTests
 {
     public class TestShooting
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetGameStateInstance();
         private readonly TowerController _towerController = new TowerController();
         private readonly TowerTargetingGuiOptions _targetOptions = new TowerTargetingGuiOptions();
 

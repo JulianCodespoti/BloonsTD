@@ -4,7 +4,7 @@ namespace BloonsProject
 {
     internal class EntityDrawer
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game state singleton
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game state singleton
 
         public void DrawBloon(Bloon bloon) // Draws a circle when the bloons position is.
         {

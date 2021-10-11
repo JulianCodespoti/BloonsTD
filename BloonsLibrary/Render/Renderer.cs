@@ -5,7 +5,7 @@ namespace BloonsProject
 {
     public class Renderer
     {
-        private readonly GameState _bloonSingleton = GameState.GetControllerSingletonInstance();
+        private readonly GameState _bloonSingleton = GameState.GetGameStateInstance();
         private readonly EntityRenderer _entityRenderer = new EntityRenderer();
         private readonly GuiRenderer _guiRenderer = new GuiRenderer();
         private readonly Map _map;

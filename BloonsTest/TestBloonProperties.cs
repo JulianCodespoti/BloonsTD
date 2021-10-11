@@ -7,7 +7,7 @@ namespace BloonsTests
 {
     public class TestBloonProperties
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetGameStateInstance();
         private readonly BloonController _bloonController = new BloonController();
         private readonly RedBloon _redBloon = new RedBloon();
         private readonly BlueBloon _blueBloon = new BlueBloon();

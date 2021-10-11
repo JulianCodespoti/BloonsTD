@@ -19,7 +19,7 @@ namespace BloonsProject
         {
         }
 
-        public static GameState GetControllerSingletonInstance()
+        public static GameState GetGameStateInstance()
         {
             if (_state == null)
             {

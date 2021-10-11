@@ -6,7 +6,7 @@ namespace BloonsProject
     internal class EntityRenderer
     {
         private readonly EntityDrawer _entityRenderer = new EntityDrawer();
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game state singleton
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game state singleton
 
         public void DisplayTowerDebugStats(Tower tower)
         {

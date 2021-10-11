@@ -7,7 +7,7 @@ namespace BloonsProject
 {
     public class MapController
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game state singleton.
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game state singleton.
 
         public bool CanPlaceTowerOnMap(Point2D location, Map map) // Determines whether a tower can be placed on the map.
         {

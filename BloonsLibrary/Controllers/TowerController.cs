@@ -5,7 +5,7 @@ namespace BloonsProject
 {
     public class TowerController
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game state singleton.
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game state singleton.
 
         public void AddTower(Tower tower) // Adds a tower
         {

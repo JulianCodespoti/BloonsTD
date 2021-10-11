@@ -6,7 +6,7 @@ namespace BloonsTests
 {
     public class TestProjectiles
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetGameStateInstance();
         private readonly ProjectileManager _projectileManager = new ProjectileManager();
         private readonly GameController _gameController = new GameController();
         private Projectile _projectile;

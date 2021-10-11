@@ -6,7 +6,7 @@ namespace BloonsProject
 {
     public class TowerOptionsRenderer
     {
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance(); // Game state singleton
+        private readonly GameState _gameState = GameState.GetGameStateInstance(); // Game state singleton
 
         public void HighlightTargetingOptionInGui(TowerTargetingGuiOptions targetOptions, Point2D position) // Draw a transparent rectangle over the selected targeting option.
         {

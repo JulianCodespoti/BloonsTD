@@ -9,7 +9,7 @@ namespace BloonsProject
         private readonly BloonController _bloonController = new BloonController();
         private readonly Stopwatch _bloonStopWatch = new Stopwatch();
         private readonly GameController _gameController = new GameController();
-        private readonly GameState _gameState = GameState.GetControllerSingletonInstance();
+        private readonly GameState _gameState = GameState.GetGameStateInstance();
         private readonly Map _map;
         private readonly MapController _mapController = new MapController();
         private readonly Renderer _renderer;

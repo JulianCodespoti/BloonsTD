@@ -10,7 +10,7 @@ namespace BloonsGame
         public LoseWindow()
         {
             InitializeComponent();
-            var gameState = GameState.GetControllerSingletonInstance();
+            var gameState = GameState.GetGameStateInstance();
             var plural = " rounds.";
             if (gameState.Player.Round == 1)
             {
