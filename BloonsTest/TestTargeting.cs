@@ -34,7 +34,7 @@ namespace BloonsTests
             
             // Act
             var actual = _tower.Targeting.BloonToTarget(listOfBloons);
-            var expected = _blueBloon;
+            var expected = _redBloon;
             
             // Assert
             Assert.AreEqual(expected,actual);
